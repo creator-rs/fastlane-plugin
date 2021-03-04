@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.email         = 'enfipy@gmail.com'
 
   spec.summary       = 'Mobile build framework for rust-lang'
-  # spec.homepage      = "https://github.com/<GITHUB_USERNAME>/fastlane-plugin-creator"
+  spec.homepage      = "https://github.com/creator-rs/fastlane-plugin"
   spec.license       = "MIT"
 
   spec.files         = Dir["lib/**/*"] + %w(README.md LICENSE)
