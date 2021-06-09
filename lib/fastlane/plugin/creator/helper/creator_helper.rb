@@ -5,11 +5,35 @@ module Fastlane
 
   module Helper
     class CreatorHelper
-      # class methods that you define here become available in your action
-      # as `Helper::CreatorHelper.your_method`
+      def self.ensure_creator_exists
+        if self.which("creator") != nil
+          return "creator"
+        elsif self.which("cargo-creator") != nil
+          return "cargo-creator"
+        else
+          return nil
+        end
+      end
+
+      # Cross-platform way of finding an executable in the $PATH.
       #
-      def self.show_message
-        UI.message("Hello from the creator plugin helper!")
+      #   which('ruby') #=> /usr/bin/ruby
+      def self.which(cmd)
+        exts = ENV['PATHEXT'] ? ENV['PATHEXT'].split(';') : ['']
+        ENV['PATH'].split(File::PATH_SEPARATOR).each do |path|
+          exts.each do |ext|
+            exe = File.join(path, "#{cmd}#{ext}")
+            return exe if File.executable?(exe) && !File.directory?(exe)
+          end
+        end
+        nil
+      end
+
+      #
+      # Find any existing Rust project
+      #
+      def self.find_default_rust_project
+        Dir["./*.toml"].last || nil
       end
     end
   end

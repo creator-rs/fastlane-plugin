@@ -13,6 +13,7 @@
 # fastlane specific
 fastlane/README.md
 fastlane/report.xml
+fastlane/example
 
 # deliver temporary files
 fastlane/Preview.html

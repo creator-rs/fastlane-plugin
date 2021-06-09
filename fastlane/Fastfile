@@ -1,3 +1,20 @@
+# before_all do
+#   ensure_git_branch(branch: 'main')
+#   git_pull
+# end
+
 lane :test do
-  creator
+  creator_build_ios(
+    project_path: "fastlane/example"
+  )
+  # capture_ios_screenshots(
+  #   derived_data_path: './fastlane',
+  #   test_without_building: true
+  # )
+  upload_to_testflight(
+    username: "enfipy",
+    app_identifier: "com.enfipy.threed",
+    apple_id: "1571507727",
+    ipa: "./project.ipa"
+  )
 end
