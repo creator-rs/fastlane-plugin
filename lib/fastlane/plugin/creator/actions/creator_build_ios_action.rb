@@ -13,7 +13,7 @@ module Fastlane
         # Params
         #
         project_path = params[:project_path]
-        # team_id = params[:team_id]
+        team_id = params[:team_id]
         # bundle_id = params[:bundle_id]
         # target_os = params[:min_target_ios]
 
@@ -33,7 +33,7 @@ module Fastlane
       end
 
       def self.description
-        "Mobile build framework for rust-lang"
+        "Builds ipa file from rust project"
       end
 
       def self.authors
@@ -45,7 +45,7 @@ module Fastlane
       end
 
       def self.details
-        # Optional:
+        # Optional
       end
 
       def self.available_options
@@ -53,16 +53,17 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :project_path,
                                        env_name: 'CREATOR_PROJECT_PATH',
                                        description: 'Path to Rust project with Cargo.toml',
-                                       default_value: Helper::CreatorHelper.find_default_rust_project,
                                        optional: false),
+          FastlaneCore::ConfigItem.new(key: :team_id,
+            env_name: 'CREATOR_TEAM_ID',
+            description: 'Apple Team ID for signing',
+            optional: false),
         ]
       end
 
       def self.is_supported?(platform)
         # Adjust this if your plugin only works for a particular platform (iOS vs. Android, for example)
         # See: https://docs.fastlane.tools/advanced/#control-configuration-by-lane-and-by-platform
-        #
-        # [:ios, :mac, :android].include?(platform)
         [:ios].include?(platform)
       end
     end

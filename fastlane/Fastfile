@@ -4,17 +4,23 @@
 # end
 
 lane :test do
+  get_certificates(
+    username: "enfipy@gmail.com",
+
+  )
+  get_provisioning_profile
   creator_build_ios(
-    project_path: "fastlane/example"
+    project_path: "fastlane/example",
+    team_id: "V4SUV789T7"
   )
   # capture_ios_screenshots(
   #   derived_data_path: './fastlane',
   #   test_without_building: true
   # )
   upload_to_testflight(
-    username: "enfipy",
+    username: "enfipy@gmail.com",
     app_identifier: "com.enfipy.threed",
     apple_id: "1571507727",
-    ipa: "./project.ipa"
+    ipa: "fastlane/example/target/apple/aarch64-apple-ios/release/game.ipa"
   )
 end
