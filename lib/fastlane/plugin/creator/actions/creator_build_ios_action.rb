@@ -24,7 +24,7 @@ module Fastlane
           UI.message("Creator does not exists!")
         end
 
-        cmd = "#{creator_bin} build apple --release --target=aarch64-apple-ios"
+        cmd = "#{creator_bin} build apple --release --target=aarch64-apple-ios --profile-path=../../AppStore_com.enfipy.explorer.mobileprovision --team-identifier=V4SUV789T7 --identity=AB50EE3454AAE27E6BC821103DA3D998C048F9E8"
         if system("cd #{project_path} && #{cmd}")
           UI.message("Success!")
         else

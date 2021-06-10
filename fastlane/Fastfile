@@ -5,10 +5,12 @@
 
 lane :test do
   get_certificates(
-    username: "enfipy@gmail.com",
-
+    username: "enfipy@gmail.com"
   )
-  get_provisioning_profile
+  get_provisioning_profile(
+    username: "enfipy@gmail.com",
+    app_identifier: "com.enfipy.explorer"
+  )
   creator_build_ios(
     project_path: "fastlane/example",
     team_id: "V4SUV789T7"
@@ -19,8 +21,8 @@ lane :test do
   # )
   upload_to_testflight(
     username: "enfipy@gmail.com",
-    app_identifier: "com.enfipy.threed",
-    apple_id: "1571507727",
-    ipa: "fastlane/example/target/apple/aarch64-apple-ios/release/game.ipa"
+    app_identifier: "com.enfipy.explorer",
+    apple_id: "1571696903",
+    ipa: "fastlane/example/target/apple/aarch64-apple-ios/release/explorer.ipa"
   )
 end
