@@ -6,9 +6,9 @@ module Fastlane
   module Helper
     class CreatorHelper
       def self.ensure_creator_exists
-        if self.which("creator") != nil
+        if !self.which("creator").nil?
           return "creator"
-        elsif self.which("cargo-creator") != nil
+        elsif !self.which("cargo-creator").nil?
           return "cargo-creator"
         else
           return nil

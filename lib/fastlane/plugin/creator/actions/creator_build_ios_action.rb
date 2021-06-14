@@ -18,7 +18,7 @@ module Fastlane
         identity = params[:identity]
 
         creator_bin = Helper::CreatorHelper.ensure_creator_exists
-        if creator_bin != nil
+        if !creator_bin.nil?
           UI.message("Creator exists!")
         else
           UI.message("Creator does not exists!")
@@ -68,7 +68,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :identity,
                                        env_name: 'CREATOR_IDENTITY',
                                        description: 'Apple identity for signing',
-                                       optional: false),
+                                       optional: false)
         ]
       end
 

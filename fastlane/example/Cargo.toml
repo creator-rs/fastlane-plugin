@@ -1,0 +1,35 @@
+[package]
+name = "explorer"
+version = "0.3.8"
+authors = ["enfipy <enfipy@gmail.com>", "olvyko <olvyko@gmail.com>"]
+edition = "2018"
+
+[dependencies]
+creator = { git = "https://github.com/creator-rs/creator", rev = "f37606666ed8455c4443d6a56c6623fdafbae0c4" }
+log = "0.4"
+anyhow = "1.0"
+substrate-subxt = "0.14"
+tokio = { version = "1.2", features = ["sync", "macros"] }
+bevy = { git = "https://github.com/TheRawMeatball/bevy", rev = "dcdd41611fdf2a19495b07153611473e8f3585a2" }
+
+[lib]
+crate-type = ["lib", "cdylib"]
+
+[package.metadata]
+app_name = "Creator Explorer"
+target_sdk_version = 30
+icon = "ic_launcher"
+version_name = "0.4"
+version_code = "4"
+
+android_app_id = "com.enfipy.creator_explorer"
+android_build_targets = ["aarch64-linux-android"]
+android_assets = "assets"
+android_res = "res/android"
+
+apple_build_targets = ["aarch64-apple-ios", "x86_64-apple-ios"]
+apple_assets = "assets"
+apple_res = "res/apple"
+
+[[package.metadata.android_permissions]]
+name = "android.permission.INTERNET"

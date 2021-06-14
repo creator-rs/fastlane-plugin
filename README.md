@@ -12,15 +12,11 @@ fastlane add_plugin creator
 
 ## About creator
 
-Mobile build framework for rust-lang
-
-**Note to author:** Add a more detailed description about this plugin here. If your plugin contains multiple actions, make sure to mention them here.
+Goal of the creator project is to make it simple to create and build Android and iOS projects with Rust and connect them with Substrate Blockchain. This plugin works only with [creator tool](https://github.com/creator-rs/creator) so you will need to [install it](https://github.com/creator-rs/creator/wiki/Command-line-tool) first.
 
 ## Example
 
-Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`.
-
-**Note to author:** Please set up a sample project to make it easy for users to explore what your plugin does. Provide everything that is necessary to try out the plugin in this project (including a sample Xcode/Android project if necessary)
+Check out the [example `Fastfile`](fastlane/Fastfile) to see how to use this plugin. Try it by cloning the repo, running `fastlane install_plugins` and `bundle exec fastlane test`. You will need to change Fastlane props to yours. To read more about this - please check out our [documentation](https://github.com/creator-rs/creator/wiki/Fastlane-automation) for this.
 
 ## Run tests for this plugin
 

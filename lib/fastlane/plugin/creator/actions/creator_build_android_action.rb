@@ -18,7 +18,7 @@ module Fastlane
         build_envs = params[:build_envs]
 
         creator_bin = Helper::CreatorHelper.ensure_creator_exists
-        if creator_bin != nil
+        if !creator_bin.nil?
           UI.message("Creator exists!")
         else
           UI.message("Creator does not exists!")
@@ -66,7 +66,7 @@ module Fastlane
           FastlaneCore::ConfigItem.new(key: :build_envs,
                                        env_name: 'CREATOR_BUILD_ENVS',
                                        description: 'Build environment variables',
-                                       optional: true),
+                                       optional: true)
         ]
       end
 
