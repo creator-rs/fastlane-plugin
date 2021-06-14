@@ -3,7 +3,26 @@
 #   git_pull
 # end
 
-lane :test do
+lane :android do
+  creator_build_android(
+    project_path: "fastlane/example",
+    sign_key_path: "/Users/enfipy/Desktop/creator_explorer.jks",
+    sign_key_pass: "123456",
+    build_envs: "RUSTFLAGS='-L/opt/homebrew/lib/gcc/11/gcc/aarch64-apple-darwin20/11.1.0'" # only for the M1 Macbooks
+  )
+  validate_play_store_json_key(
+    json_key: "~/Desktop/pc-api-6211333603859992930-229-b7b733663878.json"
+  )
+  upload_to_play_store(
+    package_name: "com.enfipy.creator_explorer",
+    apk: "fastlane/example/target/android/release/Creator Explorer.apk",
+    json_key: "~/Desktop/pc-api-6211333603859992930-229-b7b733663878.json",
+    release_status: "draft",
+    track: "internal"
+  )
+end
+
+lane :ios do
   get_certificates(
     username: "enfipy@gmail.com"
   )
@@ -13,12 +32,10 @@ lane :test do
   )
   creator_build_ios(
     project_path: "fastlane/example",
-    team_id: "V4SUV789T7"
+    profile_path: "../../AppStore_com.enfipy.explorer.mobileprovision",
+    team_id: "V4SUV789T7",
+    identity: "AB50EE3454AAE27E6BC821103DA3D998C048F9E8"
   )
-  # capture_ios_screenshots(
-  #   derived_data_path: './fastlane',
-  #   test_without_building: true
-  # )
   upload_to_testflight(
     username: "enfipy@gmail.com",
     app_identifier: "com.enfipy.explorer",
