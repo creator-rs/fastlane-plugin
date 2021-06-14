@@ -20,8 +20,13 @@ jobs:
         ruby-version: 2.4
     - name: Install dependencies
       run: bundle check || bundle install --jobs=4 --retry=3 --path vendor/bundle
-    - name: Run tests
+    - name: Login to git
+      run: |
+        git config --global user.email "enfipy@gmail.com"
+        git config --global user.name "David Ackerman"
+    - name: Run publish script
       run: |
         bundle install
-        rake install
-        rake release
+        bundle exec rake -t
+        bundle exec rake install
+        bundle exec rake release
